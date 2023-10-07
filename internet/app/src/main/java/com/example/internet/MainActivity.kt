@@ -54,9 +54,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val username = findViewById<EditText>(R.id.editUsername)
 
-        val btn = findViewById<Button>(R.id.buttonQuery)
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.github.com/")
             .addConverterFactory(MoshiConverterFactory.create())
@@ -67,6 +65,9 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = MyAdapter(emptyList())
+
+        val btn = findViewById<Button>(R.id.buttonQuery)
+        val username = findViewById<EditText>(R.id.editUsername)
 
         btn.setOnClickListener {
             val user = username.text.toString()
