@@ -1,6 +1,7 @@
-package com.example.room
+package com.example.room.ForeignKey.Companion.CASCADE
 
 import androidx.room.*
+import androidx.room.ForeignKey.Companion.CASCADE
 
 @Entity(tableName = "student_table")
 data class Student (
@@ -20,7 +21,7 @@ data class ClassInfo (
 @Entity(tableName = "enrollment",
     primaryKeys = ["sid", "cid"],
     foreignKeys = [
-        ForeignKey(entity = Student::class, parentColumns = ["student_id"], childColumns = ["sid"], onDelete = ForeignKey.CASCADE),
+        ForeignKey(entity = Student::class, parentColumns = ["student_id"], childColumns = ["sid"], onDelete = CASCADE),
         ForeignKey(entity = ClassInfo::class, parentColumns = ["id"], childColumns = ["cid"])
     ],
     indices = [Index(value=["sid", "cid"])]
